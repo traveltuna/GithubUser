@@ -18,30 +18,38 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IlT-T6-i6v">
-                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <rect key="frame" x="0.0" y="172" width="414" height="724"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Y6W-OH-hqX" id="HmJ-Mc-SNc"/>
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="p2z-wl-jrJ"/>
                                 </connections>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="UQA-vS-xg7" customClass="UserProfileHeaderView" customModule="GithubUser" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="414" height="128"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="IlT-T6-i6v" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="0Cg-oe-nQb"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="IlT-T6-i6v" secondAttribute="trailing" id="M5y-gZ-Apf"/>
                             <constraint firstItem="IlT-T6-i6v" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="PkJ-vc-51t"/>
+                            <constraint firstItem="UQA-vS-xg7" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="aP4-YR-d7b"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="UQA-vS-xg7" secondAttribute="trailing" id="cBg-Ay-wr6"/>
+                            <constraint firstItem="UQA-vS-xg7" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="d5h-WA-r4t"/>
+                            <constraint firstItem="IlT-T6-i6v" firstAttribute="top" secondItem="UQA-vS-xg7" secondAttribute="bottom" id="dHe-Jz-lep"/>
                             <constraint firstAttribute="bottom" secondItem="IlT-T6-i6v" secondAttribute="bottom" id="yAk-9j-Mec"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="profileHeaderView" destination="UQA-vS-xg7" id="Ba5-Ql-Dha"/>
                         <outlet property="tableView" destination="IlT-T6-i6v" id="Z6N-bc-HbO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10" y="52"/>
+            <point key="canvasLocation" x="8.6956521739130448" y="51.5625"/>
         </scene>
     </scenes>
     <resources>

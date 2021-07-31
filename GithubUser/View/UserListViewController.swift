@@ -8,7 +8,11 @@
 import UIKit
 
 final class UserListViewController: UIViewController {
-    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView! {
+        didSet {
+            tableView.tableFooterView = UIView()
+        }
+    }
     private var userViewModel = UserViewModel(users: [])
     override func viewDidLoad() {
         super.viewDidLoad()

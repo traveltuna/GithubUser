@@ -18,12 +18,28 @@ struct RepositoryViewModel {
                 completionHandler(nil, error)
                 return
             }
-//            if let returnData = String(data: data!, encoding: .utf8) {
-//                print(returnData)
-//            }
             if let data = data,
                let array = try? JSONDecoder().decode([Repository].self, from: data) {
+                let notForkRepositories = array.filter { !$0.isFork }
+                print(notForkRepositories.count)
+                print(array.count)
                 completionHandler(RepositoryViewModel(repositories: array), nil)
+            }
+        })
+        task.resume()
+    }
+    
+    func fetchUserProfile(with username: String, completionHandler: @escaping (UserProfile?, Error?) -> Void) {
+        let url = URL(string: "https://api.github.com/users/" + username)!
+        
+        let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+            if let error = error {
+                completionHandler(nil, error)
+                return
+            }
+            if let data = data,
+               let profile = try? JSONDecoder().decode(UserProfile.self, from: data) {
+                completionHandler(profile, nil)
             }
         })
         task.resume()

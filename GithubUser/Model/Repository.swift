@@ -8,11 +8,12 @@
 import Foundation
 
 struct Repository: Codable {
-    let url: String?
+    let url: String
     let name: String?
     let descriptionText: String?
     let starCount: Int
     let language: String?
+    let isFork: Bool
     
     enum CodingKeys: String, CodingKey {
         case url = "html_url"
@@ -20,5 +21,6 @@ struct Repository: Codable {
         case descriptionText = "description"
         case starCount = "stargazers_count"
         case language = "language"
+        case isFork = "fork"
     }
 }

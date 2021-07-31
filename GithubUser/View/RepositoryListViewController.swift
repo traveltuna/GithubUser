@@ -8,7 +8,13 @@
 import UIKit
 
 final class RepositoryListViewController: UIViewController {
-    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView! {
+        didSet {
+            tableView.tableFooterView = UIView()
+        }
+    }
+    @IBOutlet private weak var profileHeaderView: UserProfileHeaderView!
+    
     private var userName: String!
     private var repositoryViewModel = RepositoryViewModel(repositories: [])
     
@@ -40,7 +46,22 @@ final class RepositoryListViewController: UIViewController {
                 }
             }
         }
-        // Do any additional setup after loading the view.
+        repositoryViewModel.fetchUserProfile(with: userName) { [weak self] profile, error in
+            if let error = error {
+                let alert = UIAlertController(title: "Error",
+                                              message: error.localizedDescription,
+                                              preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                alert.addAction(cancelAction)
+                DispatchQueue.main.async {
+                    self?.present(alert, animated: true, completion: nil)
+                }
+            } else if let profile = profile {
+                DispatchQueue.main.async {
+                    self?.profileHeaderView.configure(with: profile)
+                }
+            }
+        }
     }
 }
 
@@ -73,8 +94,8 @@ extension RepositoryListViewController: UITableViewDataSource {
 // MARK: UITableViewDelegate Methods
 extension RepositoryListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let vc = UIViewController()
-//        navigationController?.pushViewController(vc, animated: true)
-//        tableView.deselectRow(at: indexPath, animated: true)
+        let vc = BrowserViewController.instance(with: repositoryViewModel.repositories[indexPath.row].url)
+        navigationController?.pushViewController(vc, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
