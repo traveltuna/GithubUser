@@ -3,18 +3,23 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		F1A7569926B4E01700BF3CE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A7569826B4E01700BF3CE2 /* AppDelegate.swift */; };
 		F1A7569B26B4E01700BF3CE2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A7569A26B4E01700BF3CE2 /* SceneDelegate.swift */; };
-		F1A7569D26B4E01700BF3CE2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A7569C26B4E01700BF3CE2 /* ViewController.swift */; };
 		F1A756A026B4E01700BF3CE2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1A7569E26B4E01700BF3CE2 /* Main.storyboard */; };
 		F1A756A226B4E01800BF3CE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1A756A126B4E01800BF3CE2 /* Assets.xcassets */; };
 		F1A756A526B4E01800BF3CE2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1A756A326B4E01800BF3CE2 /* LaunchScreen.storyboard */; };
 		F1A756B026B4E01800BF3CE2 /* GithubUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A756AF26B4E01800BF3CE2 /* GithubUserTests.swift */; };
 		F1A756BB26B4E01800BF3CE2 /* GithubUserUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A756BA26B4E01800BF3CE2 /* GithubUserUITests.swift */; };
+		F1A756CC26B4E9BD00BF3CE2 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A756CB26B4E9BD00BF3CE2 /* UserListViewController.swift */; };
+		F1A756CF26B4EA4900BF3CE2 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A756CD26B4EA4900BF3CE2 /* UserTableViewCell.swift */; };
+		F1A756D026B4EA4900BF3CE2 /* UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1A756CE26B4EA4900BF3CE2 /* UserTableViewCell.xib */; };
+		F1A756D226B4EAC600BF3CE2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A756D126B4EAC600BF3CE2 /* User.swift */; };
+		F1A756D426B4EAFE00BF3CE2 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A756D326B4EAFE00BF3CE2 /* UserViewModel.swift */; };
+		F1A756D726B4FD6E00BF3CE2 /* UIView + identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A756D626B4FD6E00BF3CE2 /* UIView + identifier.swift */; };
 		F9E65BA87C6AA63791DC97A9 /* Pods_GithubUser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBE39A798D75711E75268302 /* Pods_GithubUser.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,7 +47,6 @@
 		F1A7569526B4E01700BF3CE2 /* GithubUser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubUser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1A7569826B4E01700BF3CE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1A7569A26B4E01700BF3CE2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F1A7569C26B4E01700BF3CE2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F1A7569F26B4E01700BF3CE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F1A756A126B4E01800BF3CE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F1A756A426B4E01800BF3CE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -53,6 +57,12 @@
 		F1A756B626B4E01800BF3CE2 /* GithubUserUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GithubUserUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1A756BA26B4E01800BF3CE2 /* GithubUserUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubUserUITests.swift; sourceTree = "<group>"; };
 		F1A756BC26B4E01800BF3CE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1A756CB26B4E9BD00BF3CE2 /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
+		F1A756CD26B4EA4900BF3CE2 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		F1A756CE26B4EA4900BF3CE2 /* UserTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserTableViewCell.xib; sourceTree = "<group>"; };
+		F1A756D126B4EAC600BF3CE2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		F1A756D326B4EAFE00BF3CE2 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		F1A756D626B4FD6E00BF3CE2 /* UIView + identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + identifier.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,9 +124,12 @@
 		F1A7569726B4E01700BF3CE2 /* GithubUser */ = {
 			isa = PBXGroup;
 			children = (
+				F1A756C826B4E97C00BF3CE2 /* Model */,
+				F1A756C926B4E98200BF3CE2 /* ViewModel */,
+				F1A756CA26B4E98D00BF3CE2 /* View */,
+				F1A756D526B4FD3900BF3CE2 /* Extension */,
 				F1A7569826B4E01700BF3CE2 /* AppDelegate.swift */,
 				F1A7569A26B4E01700BF3CE2 /* SceneDelegate.swift */,
-				F1A7569C26B4E01700BF3CE2 /* ViewController.swift */,
 				F1A7569E26B4E01700BF3CE2 /* Main.storyboard */,
 				F1A756A126B4E01800BF3CE2 /* Assets.xcassets */,
 				F1A756A326B4E01800BF3CE2 /* LaunchScreen.storyboard */,
@@ -143,13 +156,46 @@
 			path = GithubUserUITests;
 			sourceTree = "<group>";
 		};
+		F1A756C826B4E97C00BF3CE2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F1A756D126B4EAC600BF3CE2 /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F1A756C926B4E98200BF3CE2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F1A756D326B4EAFE00BF3CE2 /* UserViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F1A756CA26B4E98D00BF3CE2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F1A756CB26B4E9BD00BF3CE2 /* UserListViewController.swift */,
+				F1A756CD26B4EA4900BF3CE2 /* UserTableViewCell.swift */,
+				F1A756CE26B4EA4900BF3CE2 /* UserTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F1A756D526B4FD3900BF3CE2 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F1A756D626B4FD6E00BF3CE2 /* UIView + identifier.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		FF22031A88FB0C9D0CFFA13B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				314D9315AC45514413C61019 /* Pods-GithubUser.debug.xcconfig */,
 				7DBF3B9209A4A715B783DF73 /* Pods-GithubUser.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -258,6 +304,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1A756D026B4EA4900BF3CE2 /* UserTableViewCell.xib in Resources */,
 				F1A756A526B4E01800BF3CE2 /* LaunchScreen.storyboard in Resources */,
 				F1A756A226B4E01800BF3CE2 /* Assets.xcassets in Resources */,
 				F1A756A026B4E01700BF3CE2 /* Main.storyboard in Resources */,
@@ -327,8 +374,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1A7569D26B4E01700BF3CE2 /* ViewController.swift in Sources */,
+				F1A756CF26B4EA4900BF3CE2 /* UserTableViewCell.swift in Sources */,
+				F1A756D426B4EAFE00BF3CE2 /* UserViewModel.swift in Sources */,
+				F1A756CC26B4E9BD00BF3CE2 /* UserListViewController.swift in Sources */,
 				F1A7569926B4E01700BF3CE2 /* AppDelegate.swift in Sources */,
+				F1A756D226B4EAC600BF3CE2 /* User.swift in Sources */,
+				F1A756D726B4FD6E00BF3CE2 /* UIView + identifier.swift in Sources */,
 				F1A7569B26B4E01700BF3CE2 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
