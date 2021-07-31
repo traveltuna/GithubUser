@@ -9,18 +9,25 @@ import Foundation
 
 struct UserViewModel {
     var users = [User]()
+    var userId = 1
+    static let numberPerPage = 30
     
     func fetchUsers(completionHandler: @escaping (UserViewModel?, Error?) -> Void) {
-        let url = URL(string: "https://api.github.com/users")!
+        var components = URLComponents(string: "https://api.github.com/users")!
+        components.queryItems = [URLQueryItem(name: "since", value: "\(userId)")]
+        let request = URLRequest(url: components.url!)
         
-        let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
             if let error = error {
                 completionHandler(nil, error)
                 return
             }
+            if let returnData = String(data: data!, encoding: .utf8) {
+                print(returnData)
+            }
             if let data = data,
                let array = try? JSONDecoder().decode([User].self, from: data) {
-                completionHandler(UserViewModel(users: array), nil)
+                completionHandler(UserViewModel(users: users + array, userId: userId + UserViewModel.numberPerPage), nil)
             }
         })
         task.resume()

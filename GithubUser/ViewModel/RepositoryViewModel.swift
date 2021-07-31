@@ -9,11 +9,15 @@ import Foundation
 
 struct RepositoryViewModel {
     var repositories = [Repository]()
+    var page = 1
     
     func fetchRepositories(with username: String, completionHandler: @escaping (RepositoryViewModel?, Error?) -> Void) {
-        let url = URL(string: "https://api.github.com/users/" + username + "/repos")!
+        //let url = URL(string: "https://api.github.com/users/" + username + "/repos")!
+        var components = URLComponents(string: "https://api.github.com/users/" + username + "/repos")!
+        components.queryItems = [URLQueryItem(name: "page", value: "\(page)")]
+        let request = URLRequest(url: components.url!)
         
-        let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
             if let error = error {
                 completionHandler(nil, error)
                 return
@@ -21,9 +25,8 @@ struct RepositoryViewModel {
             if let data = data,
                let array = try? JSONDecoder().decode([Repository].self, from: data) {
                 let notForkRepositories = array.filter { !$0.isFork }
-                print(notForkRepositories.count)
-                print(array.count)
-                completionHandler(RepositoryViewModel(repositories: array), nil)
+                completionHandler(RepositoryViewModel(repositories: repositories + notForkRepositories,
+                                                      page: page + 1), nil)
             }
         })
         task.resume()

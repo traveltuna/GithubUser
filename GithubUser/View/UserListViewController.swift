@@ -13,11 +13,27 @@ final class UserListViewController: UIViewController {
             tableView.tableFooterView = UIView()
         }
     }
-    private var userViewModel = UserViewModel(users: [])
+    private var userViewModel = UserViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
         setupAppearance()
         registerCells()
+        fetchUsers()
+    }
+}
+
+// MARK: Private Methods
+private extension UserListViewController {
+    func setupAppearance() {
+        self.title = "GitHub Users"
+    }
+    
+    func registerCells() {
+        tableView.register(UINib(nibName: UserTableViewCell.className, bundle: nil),
+                           forCellReuseIdentifier: UserTableViewCell.identifier)
+    }
+    
+    func fetchUsers() {
         userViewModel.fetchUsers { [weak self] viewModel, error in
             if let error = error {
                 let alert = UIAlertController(title: "Error",
@@ -38,18 +54,6 @@ final class UserListViewController: UIViewController {
     }
 }
 
-// MARK: Private Methods
-private extension UserListViewController {
-    func setupAppearance() {
-        self.title = "GitHub Users"
-    }
-    
-    func registerCells() {
-        tableView.register(UINib(nibName: UserTableViewCell.className, bundle: nil),
-                           forCellReuseIdentifier: UserTableViewCell.identifier)
-    }
-}
-
 // MARK: UITableViewDataSource Methods
 extension UserListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -60,6 +64,10 @@ extension UserListViewController: UITableViewDataSource {
         let userCell = tableView.dequeueReusableCell(withIdentifier: UserTableViewCell.identifier,
                                                       for: indexPath) as! UserTableViewCell
         userCell.configure(with: userViewModel.users[indexPath.row])
+        if indexPath.row == userViewModel.users.count - 1 {
+            // reach the last row and start to fetch more users
+            fetchUsers()
+        }
         return userCell
     }
 }

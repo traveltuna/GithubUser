@@ -16,7 +16,7 @@ final class RepositoryListViewController: UIViewController {
     @IBOutlet private weak var profileHeaderView: UserProfileHeaderView!
     
     private var userName: String!
-    private var repositoryViewModel = RepositoryViewModel(repositories: [])
+    private var repositoryViewModel = RepositoryViewModel()
     
     static func instance(with userName: String) -> RepositoryListViewController {
         let storyboard = UIStoryboard(name: "RepositoryList", bundle: nil)
@@ -29,6 +29,23 @@ final class RepositoryListViewController: UIViewController {
         super.viewDidLoad()
         setupAppearance()
         registerCells()
+        fetchRepositories()
+        fetchUserProfile()
+    }
+}
+
+// MARK: Private Methods
+private extension RepositoryListViewController {
+    func setupAppearance() {
+        self.title = userName
+    }
+    
+    func registerCells() {
+        tableView.register(UINib(nibName: RepositoryTableViewCell.className, bundle: nil),
+                           forCellReuseIdentifier: RepositoryTableViewCell.identifier)
+    }
+    
+    func fetchRepositories() {
         repositoryViewModel.fetchRepositories(with: userName) { [weak self] viewModel, error in
             if let error = error {
                 let alert = UIAlertController(title: "Error",
@@ -46,6 +63,9 @@ final class RepositoryListViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    func fetchUserProfile() {
         repositoryViewModel.fetchUserProfile(with: userName) { [weak self] profile, error in
             if let error = error {
                 let alert = UIAlertController(title: "Error",
@@ -65,18 +85,6 @@ final class RepositoryListViewController: UIViewController {
     }
 }
 
-// MARK: Private Methods
-private extension RepositoryListViewController {
-    func setupAppearance() {
-        self.title = userName
-    }
-    
-    func registerCells() {
-        tableView.register(UINib(nibName: RepositoryTableViewCell.className, bundle: nil),
-                           forCellReuseIdentifier: RepositoryTableViewCell.identifier)
-    }
-}
-
 // MARK: UITableViewDataSource Methods
 extension RepositoryListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -87,6 +95,10 @@ extension RepositoryListViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: RepositoryTableViewCell.identifier,
                                                       for: indexPath) as! RepositoryTableViewCell
         cell.configure(with: repositoryViewModel.repositories[indexPath.row])
+        if indexPath.row == repositoryViewModel.repositories.count - 1 {
+            // reach the last row and start to fetch more repositories
+            fetchRepositories()
+        }
         return cell
     }
 }
