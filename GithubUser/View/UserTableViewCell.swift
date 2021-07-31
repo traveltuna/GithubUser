@@ -17,7 +17,7 @@ final class UserTableViewCell: UITableViewCell {
         avatarImageView.image = nil
     }
     
-    func setUser(_ user: User) {
+    func configure(with user: User) {
         avatarImageView.sd_setImage(with: URL(string: user.avatarURLString)) { [weak self] image, error, _, _ in
             if error != nil {
                 self?.avatarImageView.image = UIImage(named: "placeholder")

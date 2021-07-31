@@ -19,8 +19,8 @@ struct UserViewModel {
                 return
             }
             if let data = data,
-               let users = try? JSONDecoder().decode([User].self, from: data) {
-                completionHandler(UserViewModel(users: users), nil)
+               let array = try? JSONDecoder().decode([User].self, from: data) {
+                completionHandler(UserViewModel(users: array), nil)
             }
         })
         task.resume()

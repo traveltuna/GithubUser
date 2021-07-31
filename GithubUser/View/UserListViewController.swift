@@ -55,7 +55,7 @@ extension UserListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let userCell = tableView.dequeueReusableCell(withIdentifier: UserTableViewCell.identifier,
                                                       for: indexPath) as! UserTableViewCell
-        userCell.setUser(userViewModel.users[indexPath.row])
+        userCell.configure(with: userViewModel.users[indexPath.row])
         return userCell
     }
 }
@@ -63,7 +63,7 @@ extension UserListViewController: UITableViewDataSource {
 // MARK: UITableViewDelegate Methods
 extension UserListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = UIViewController()
+        let vc = RepositoryListViewController.instance(with: userViewModel.users[indexPath.row].accountName)
         navigationController?.pushViewController(vc, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
