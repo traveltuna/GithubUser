@@ -95,7 +95,7 @@ extension RepositoryListViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: RepositoryTableViewCell.identifier,
                                                       for: indexPath) as! RepositoryTableViewCell
         cell.configure(with: repositoryViewModel.repositories[indexPath.row])
-        if indexPath.row == repositoryViewModel.repositories.count - 1 {
+        if indexPath.row == repositoryViewModel.repositories.count - 1 && !repositoryViewModel.shouldStopLoading {
             // reach the last row and start to fetch more repositories
             fetchRepositories()
         }

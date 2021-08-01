@@ -22,9 +22,6 @@ struct UserViewModel {
                 completionHandler(nil, error)
                 return
             }
-            if let returnData = String(data: data!, encoding: .utf8) {
-                print(returnData)
-            }
             if let data = data,
                let array = try? JSONDecoder().decode([User].self, from: data) {
                 completionHandler(UserViewModel(users: users + array, userId: userId + UserViewModel.numberPerPage), nil)
